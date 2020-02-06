@@ -2,8 +2,12 @@ package com.licensing.service.services;
 
 import com.licensing.service.models.License;
 
-public interface LicenseService {
-    License getLicenseById(Long id);
+import java.util.List;
 
-    Iterable<License> getAllLicenses();
+public interface LicenseService {
+    License getLicense(Long orgId, Long licenseId);
+
+    List<License> getAllLicensesByOrg(Long orgId);
+
+    void saveLicense(Long orgId, String productName);
 }

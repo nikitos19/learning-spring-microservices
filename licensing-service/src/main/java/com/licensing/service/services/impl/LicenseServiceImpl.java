@@ -6,6 +6,7 @@ import com.licensing.service.services.LicenseService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class LicenseServiceImpl implements LicenseService {
@@ -14,13 +15,20 @@ public class LicenseServiceImpl implements LicenseService {
     private LicenseRepository licenseRepository;
 
     @Override
-    public License getLicenseById(Long id) {
-        return licenseRepository.findById(id)
-                .orElse(null);
+    public License getLicense(Long orgId, Long licenseId) {
+        return licenseRepository.findByOrganizationIdAndLicenseId(orgId, licenseId);
     }
 
     @Override
-    public Iterable<License> getAllLicenses() {
-        return licenseRepository.findAll();
+    public List<License> getAllLicensesByOrg(Long orgId) {
+        return licenseRepository.findByOrganizationId(orgId);
+    }
+
+    @Override
+    public void saveLicense(Long orgId, String productName) {
+        License license = new License();
+        license.setOrganizationId(orgId);
+        license.setProductName(productName);
+        licenseRepository.save(license);
     }
 }
