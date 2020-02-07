@@ -1,4 +1,4 @@
-package com.licensing.service.models;
+package com.licensing.service.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,13 +1,13 @@
 package com.licensing.service.services;
 
-import com.licensing.service.models.License;
+import com.licensing.service.dtos.LicenseData;
 
 import java.util.List;
 
 public interface LicenseService {
-    License getLicense(Long orgId, Long licenseId);
+    LicenseData getLicense(Long orgId, Long licenseId);
 
-    List<License> getAllLicensesByOrg(Long orgId);
+    List<LicenseData> getAllLicensesByOrg(Long orgId);
 
     void saveLicense(Long orgId, String productName);
 }
